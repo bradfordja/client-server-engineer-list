@@ -1,0 +1,56 @@
+<!-- app.component.html -->
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="card">
+      <div class="card-body">
+        <form>
+          <!-- First Name -->
+          <div class="mb-3">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstName" [(ngModel)]="engineer.firstName" name="firstName">
+          </div>
+  
+          <!-- Last Name -->
+          <div class="mb-3">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastName" [(ngModel)]="engineer.lastName" name="lastName">
+          </div>
+  
+          <!-- Full Name -->
+          <div class="mb-3">
+            <label for="fullName" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="fullName" [(ngModel)]="engineer.fullName" name="fullName">
+          </div>
+  
+          <!-- Title -->
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" [(ngModel)]="engineer.title" name="title">
+          </div>
+  
+          <!-- Site ID - Select Box -->
+          <div class="mb-3">
+            <label for="siteId" class="form-label">Site ID</label>
+            <select class="form-select" id="siteId" [(ngModel)]="engineer.siteId" name="siteId">
+              <option *ngFor="let site of sites" [value]="site.id">{{ site.name }}</option>
+            </select>
+          </div>
+  
+          <!-- Status - Select Box -->
+          <div class="mb-3">
+            <label for="status" class="form-label">Status</label>
+            <select class="form-select" id="status" [(ngModel)]="engineer.status" name="status">
+              <option *ngFor="let status of statuses" [value]="status.id">{{ status.name }}</option>
+            </select>
+          </div>
+        </form>
+  
+        <!-- Buttons -->
+        <div>
+          <button type="button" (click)="createEngineer()" class="btn btn-lg btn-primary">Save</button>
+          <button type="button" (click)="updateEngineer()" class="btn btn-lg btn-primary" [disabled]="!isUpdateEnabled">Update</button>
+          <button type="button" (click)="cancelEngineer()" class="btn btn-secondary btn-lg">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

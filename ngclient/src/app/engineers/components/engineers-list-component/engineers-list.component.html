@@ -1,0 +1,38 @@
+<!-- app.component.html -->
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="card">
+      <div class="card-body">
+        <!-- Autocomplete components -->
+        <div class="input-container">
+          <app-full-name-search-autocomplete (searchResult)="searchResult($event)"></app-full-name-search-autocomplete>   
+          <app-site-name-search-autocomplete (searchResult)="searchResult($event)"></app-site-name-search-autocomplete>
+        </div>
+        <!-- Table listing engineers -->
+        <div>
+          <table class="table table-dark table-striped">
+            <thead>
+              <tr>
+                <th (click)="sort('firstName')">First Name</th>
+                <th (click)="sort('lastName')">Last Name</th>
+                <th (click)="sort('fullName')">Full Name</th>
+                <th (click)="sort('title')">Title</th>
+                <th (click)="sort('siteName')">Site ID</th>
+                <th (click)="sort('statusName')">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let engineer of engineers">
+                  <td>{{ engineer.firstName }}</td>
+                  <td>{{ engineer.lastName }}</td>
+                  <td>{{ engineer.fullName }}</td>
+                  <td>{{ engineer.title }}</td>
+                  <td>{{ engineer?.siteName }}</td>
+                  <td>{{ engineer?.statusName }}</td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  

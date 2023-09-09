@@ -1,0 +1,46 @@
+<!-- app.component.html -->
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="card">
+        <div class="card-body">
+            <form>
+                <!-- Site ID -->
+                <div class="mb-3">
+                    <label for="siteId" class="form-label">Site ID</label>
+                    <input type="text" class="form-control" id="siteId" [(ngModel)]="siteLocation.siteId" name="siteId" required>
+                </div>
+
+                <!-- Site Name -->
+                <div class="mb-3">
+                    <label for="siteName" class="form-label">Site Name</label>
+                    <input type="text" class="form-control" id="siteName" [(ngModel)]="siteLocation.siteName" name="siteName" required>
+                </div>
+
+                <!-- Address -->
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <input type="text" class="form-control" id="address" [(ngModel)]="siteLocation.address" name="address" required>
+                </div>
+
+                <!-- City -->
+                <div class="mb-3">
+                    <label for="city" class="form-label">City</label>
+                    <input type="text" class="form-control" id="city" [(ngModel)]="siteLocation.city" name="city" required>
+                </div>
+
+                <!-- State -->
+                <div class="mb-3">
+                    <label for="state" class="form-label">State</label>
+                    <input type="text" class="form-control" id="state" [(ngModel)]="siteLocation.state" name="state" required>
+                </div>
+            </form>
+
+            <!-- Buttons -->
+            <div>
+                <button type="button" (click)="createSiteLocation()" class="btn btn-lg btn-primary">Create</button>
+                <button type="button" (click)="updateSiteLocation()" class="btn btn-lg btn-primary" [disabled]="!isUpdateEnabled">Update</button>
+                <button type="button" (click)="cancel()" class="btn btn-secondary btn-lg">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

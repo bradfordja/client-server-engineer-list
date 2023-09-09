@@ -1,0 +1,49 @@
+-- Create Engineer Status Table
+CREATE TABLE EngineerStatus (
+    id INT PRIMARY KEY,
+    status_name VARCHAR(50) NOT NULL
+);
+
+-- Insert sample data into Engineer Status Table
+INSERT INTO EngineerStatus (id, status_name)
+VALUES
+    (1, 'Active'),
+    (2, 'Inactive'),
+    (3, 'On Leave');
+    (4, 'Working');
+
+-- Create Site Location Table
+CREATE TABLE SiteLocation (
+    siteId INT PRIMARY KEY,
+    site_name VARCHAR(100) NOT NULL,
+    address VARCHAR(200) NOT NULL,
+    city VARCHAR(50) NOT NULL,
+    state VARCHAR(50) NOT NULL
+);
+
+-- Insert sample data into Site Location Table
+INSERT INTO SiteLocation (siteId, site_name, address, city, state)
+VALUES
+    (1, 'Site A', '123 Main St', 'New York', 'NY'),
+    (2, 'Site B', '456 Elm St', 'Los Angeles', 'CA'),
+    (3, 'Site C', '789 Oak St', 'Chicago', 'IL');
+
+-- Create Engineer Table
+CREATE TABLE Engineer (
+    engineerId INT PRIMARY KEY,
+    firstname VARCHAR(50) NOT NULL,
+    lastname VARCHAR(50) NOT NULL,
+    full_name AS (firstname + ' ' + lastname) PERSISTED,
+    title VARCHAR(100) NOT NULL,
+    siteId INT NOT NULL,
+    status INT NOT NULL,
+    FOREIGN KEY (siteId) REFERENCES SiteLocation (siteId),
+    FOREIGN KEY (status) REFERENCES EngineerStatus (id)
+);
+
+-- Insert sample data into Engineer Table
+INSERT INTO Engineer (engineerId, firstname, lastname, title, siteId, status)
+VALUES
+    (1, 'John', 'Doe', 'Software Engineer', 1, 1),
+    (2, 'Jane', 'Smith', 'Network Engineer', 2, 4),
+    (3, 'Michael', 'Johnson', 'Electrical Engineer', 3, 2);
